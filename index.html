@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Титан — Спортивный Клуб</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://source.unsplash.com/1600x900/?gym') center/cover no-repeat;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff3d00;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff3d00;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1600x900/?fitness') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            padding: 14px 40px;
+            background: #ff3d00;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #e63300;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 100px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: #222;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-15px);
+        }
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 25px;
+        }
+        .card h3 {
+            margin: 15px 0;
+            color: #ff3d00;
+        }
+
+        .schedule {
+            background: #f8f9fa;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 18px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #ff3d00;
+            color: white;
+        }
+        tr:hover {
+            background: #fff5f0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ТИТАН</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#schedule">Расписание</a></li>
+                <li><a href="#trainers">Тренеры</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <button class="btn" onclick="showModal()">Записаться</button>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ТИТАН СПОРТ</h1>
+            <p>Стань сильнее. Стань лучше. Стань Титаном.</p>
+            <button class="btn" onclick="showModal()">Начать тренировки</button>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Наши направления</h2>
+            <div class="services">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Силовые тренировки</h3>
+                        <p>Работа с железом, функциональный тренинг, кроссфит</p>
+                        <strong>от 2500 ₽/месяц</strong>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Йога и пилатес</h3>
+                        <p>Восстановление, гибкость, дыхательные практики</p>
+                        <strong>от 2200 ₽/месяц</strong>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Единоборства</h3>
+                        <p>Бокс, MMA, тайский бокс, карате</p>
+                        <strong>от 3000 ₽/месяц</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <h2>Расписание занятий</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Время</th>
+                        <th>Понедельник</th>
+                        <th>Вторник</th>
+                        <th>Среда</th>
+                        <th>Четверг</th>
+                        <th>Пятница</th>
+                        <th>Суббота</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>09:00</td><td>Йога</td><td>Сила</td><td>Йога</td><td>Сила</td><td>Йога</td><td>Кроссфит</td></tr>
+                    <tr><td>11:00</td><td>Бокс</td><td>Пилатес</td><td>Бокс</td><td>Пилатес</td><td>Бокс</td><td>—</td></tr>
+                    <tr><td>17:00</td><td>Сила</td><td>Кроссфит</td><td>Сила</td><td>Кроссфит</td><td>Сила</td><td>Йога</td></tr>
+                    <tr><td>19:00</td><td>MMA</td><td>Бокс</td><td>MMA</td><td>Бокс</td><td>MMA</td><td>Сила</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="trainers">
+        <div class="container">
+            <h2>Наши тренеры</h2>
+            <div class="services">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Алексей Морозов</h3>
+                        <p>Мастер спорта по тяжёлой атлетике<br>Стаж 12 лет</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Анна Ковалёва</h3>
+                        <p>Инструктор йоги и пилатеса<br>RYT 500</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Дмитрий Волков</h3>
+                        <p>Чемпион России по MMA<br>Тренер единоборств</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container" style="text-align: center;">
+            <h2>Присоединяйся к нам!</h2>
+            <p style="font-size: 1.3rem; margin: 30px 0;">
+                Адрес: г. Ставрополь, ул. Пирогова, 35<br>
+                Телефон: <strong>+7 (495) 123-45-67</strong><br>
+                Email: info@titan-sport.ru
+            </p>
+            <button class="btn" onclick="showModal()">Записаться на пробную тренировку</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>ТИТАН</h3>
+                <p>Спортивный клуб премиум-класса</p>
+            </div>
+            <div>
+                <h4>Часы работы</h4>
+                <p>Пн–Пт: 7:00 — 23:00<br>Сб–Вс: 8:00 — 22:00</p>
+            </div>
+            <div>
+                <h4>Социальные сети</h4>
+                <p>Instagram • VK • Telegram</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px; opacity: 0.6;">
+            © 2026 Спортивный клуб «Титан». Все права защищены.
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Запись на тренировку</h2>
+            <p>Заполните форму и мы свяжемся с вами в течение 15 минут</p>
+
+            <form id="form" style="margin-top: 25px; text-align: left;">
+                <input type="text" id="name" placeholder="Ваше имя" required style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; border-radius:8px;">
+                <input type="tel" id="phone" placeholder="Телефон" required style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; border-radius:8px;">
+                <select id="service" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; border-radius:8px;">
+                    <option value="">Выберите направление</option>
+                    <option>Силовые тренировки</option>
+                    <option>Йога и пилатес</option>
+                    <option>Единоборства</option>
+                    <option>Кроссфит</option>
+                </select>
+                <button type="button" onclick="submitForm()" class="btn" style="width:100%; margin-top:15px;">Отправить заявку</button>
+            </form>
+            <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:#999; cursor:pointer;">Закрыть</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        function showModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            if (name && phone) {
+                alert(`✅ Спасибо, ${name}! Ваша заявка принята.\nМы свяжемся с вами по номеру ${phone} в ближайшее время.`);
+                closeModal();
+                document.getElementById('form').reset();
+            } else {
+                alert('Пожалуйста, заполните все обязательные поля.');
+            }
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
